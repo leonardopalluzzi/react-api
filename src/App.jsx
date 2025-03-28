@@ -2,30 +2,34 @@ import { useState, useEffect } from 'react'
 const endpoint = 'http://localhost:3000/api/v1/posts';
 const imgPath = 'http://localhost:3000/imgs/posts/'
 
-let index = {
-  method: 'get',
-  Credential: 'include',
-  mode: 'cors'
-}
+
 
 
 function App() {
 
   const [postsData, setPosts] = useState([])
+  const [deleteSlug, setDeleteSlug] = useState('')
 
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   }
 
+  let destroy = {
+    method: 'DELETE',
+  }
 
-  function handleDelete(url) {
-    fetch(url)
-      .then(res => res.json())
+
+  function handleDelete(url, slug) {
+    setDeleteSlug(slug)
+    console.log(slug);
+
+    fetch(url + "/" + slug, destroy)
       .then(data => {
-        console.log(data);
-
+        console.log('Deleted:', data);
+        fetchData(endpoint)
       })
       .catch(error => console.error(error))
+
   }
 
   function fetchData(url) {
@@ -81,7 +85,7 @@ function App() {
                       <img className='post_img' src={imgPath + post.image} alt="" /></td>
                     <td>{post.tags}</td>
                     <td>
-                      <button onClick={() => handleDelete(endpoint)} className='btn btn-danger'>Delete</button>
+                      <button onClick={() => handleDelete(endpoint, post.slug)} className='btn btn-danger'>Delete</button>
                     </td>
                   </tr>
 
