@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-const enpoint = 'http://192.168.1.70:3000/api/v1/posts'
+const endpoint = 'http://localhost:3000/api/v1/posts'
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData(enpoint)
+    fetchData(endpoint)
   }, [])
 
 
