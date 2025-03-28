@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-const endpoint = 'http://localhost:3000/api/v1/posts'
+const endpoint = 'http://localhost:3000/api/v1/posts';
 
 
 function App() {
 
-  const [posts, setPosts] = useState([])
+  const [postsData, setPosts] = useState([])
 
 
   function fetchData(url) {
@@ -39,7 +39,9 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {posts.map(post => {
+
+              {postsData.map(post => (
+
                 <tr key={post.slug} className="">
                   <td scope="row">{post.title}</td>
                   <td>{post.slug}</td>
@@ -47,7 +49,11 @@ function App() {
                   <td>{post.image}</td>
                   <td>{post.tags}</td>
                 </tr>
-              })}
+
+
+              ))}
+
+
 
 
             </tbody>
