@@ -1,1 +1,5 @@
 @import 'bootstrap';
+
+.post_img {
+  max-width: 100%;
+}
