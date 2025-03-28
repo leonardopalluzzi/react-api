@@ -13,17 +13,15 @@ export default function Main({ postsData, handleDelete, endpoint, imgPath }) {
     return (
         <main>
             <div className="container">
-                <div
-                    className="table-responsive"
-                >
+                <div className="table-responsive">
                     <table
-                        className="table table-primary"
+                        className="table table-white"
                     >
                         <thead>
-                            <tr className="">
-                                <td scope="row">Title</td>
+                            <tr className="titles">
+                                <td scope="row">IMG</td>
+                                <td>Title</td>
                                 <td>Content</td>
-                                <td>IMG</td>
                                 <td>TAGS</td>
                                 <td>Operations</td>
                             </tr>
@@ -31,13 +29,20 @@ export default function Main({ postsData, handleDelete, endpoint, imgPath }) {
                         <tbody>
 
                             {postsData.map(post => (
-
-                                <tr key={post.slug} className="">
+                                <tr key={post.slug} className="post_row">
+                                    <td>
+                                        <img className='post_img' src={imgPath + post.image} alt="" /></td>
                                     <td scope="row">{post.title}</td>
                                     <td>{truncateText(post.content, 50)}</td>
                                     <td>
-                                        <img className='post_img' src={imgPath + post.image} alt="" /></td>
-                                    <td>{post.tags}</td>
+                                        <ul className="tag_list">
+                                            {post.tags.map(tag => (
+                                                <li>{tag}, </li>
+                                            ))}
+                                        </ul>
+                                    </td>
+
+
                                     <td>
                                         <button onClick={() => handleDelete(endpoint, post.slug)} className='btn btn-danger'>Delete</button>
                                     </td>
