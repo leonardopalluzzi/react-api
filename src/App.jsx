@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react'
 const endpoint = 'http://localhost:3000/api/v1/posts';
 const imgPath = 'http://localhost:3000/imgs/posts/'
 
-
-
-
 function App() {
 
   const [postsData, setPosts] = useState([])
   const [deleteSlug, setDeleteSlug] = useState('')
 
+  /**
+   * Truncates a given text to a specified maximum length and appends "..." if truncated.
+   * @param {string} text - The text to be truncated.
+   * @param {number} maxLength - The maximum allowed length of the text.
+   * @returns {string} - The truncated text.
+   */
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   }
@@ -18,7 +21,11 @@ function App() {
     method: 'DELETE',
   }
 
-
+  /**
+   * Sends a DELETE request to the specified URL with the given slug and updates the posts data.
+   * @param {string} url - The base URL for the API endpoint.
+   * @param {string} slug - The unique identifier of the post to be deleted.
+   */
   function handleDelete(url, slug) {
     setDeleteSlug(slug)
     console.log(slug);
@@ -29,9 +36,12 @@ function App() {
         fetchData(endpoint)
       })
       .catch(error => console.error(error))
-
   }
 
+  /**
+   * Fetches data from the specified URL and updates the posts state.
+   * @param {string} url - The API endpoint to fetch data from.
+   */
   function fetchData(url) {
     fetch(url)
       .then(res => res.json())
