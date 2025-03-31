@@ -1,4 +1,4 @@
-export default function Main({ postsData, handleDelete, endpoint, imgPath }) {
+export default function Main({ handleModify, postsData, handleDelete, endpoint, imgPath }) {
 
     /**
  * Truncates a given text to a specified maximum length and appends "..." if truncated.
@@ -36,15 +36,22 @@ export default function Main({ postsData, handleDelete, endpoint, imgPath }) {
                                     <td>{truncateText(post.content, 50)}</td>
                                     <td>
                                         <ul className="tag_list">
-                                            {post.tags.map(tag => (
-                                                <li>{tag}, </li>
+                                            {post.tags.map((tag, i) => (
+                                                <li key={`tag-${i}`}>{tag}, </li>
                                             ))}
                                         </ul>
                                     </td>
 
 
                                     <td>
-                                        <button onClick={() => handleDelete(endpoint, post.slug)} className='btn btn-danger'>Delete</button>
+                                        <div className="container">
+                                            <div className="row">
+                                                <button onClick={() => handleDelete(endpoint, post.slug)} className='col-6 btn btn-danger'>Delete</button>
+                                                <button onClick={() => handleModify(post.slug)} className='col-6 btn btn-primary'>Modify</button>
+                                            </div>
+
+                                        </div>
+
                                     </td>
                                 </tr>
 
