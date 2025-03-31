@@ -29,6 +29,10 @@ function App() {
     body: JSON.stringify(udpateObj)
   }
 
+  /**
+   * Handles the modification of a post by setting the slug and toggling the display state.
+   * @param {string} slug - The unique identifier of the post to be modified.
+   */
   function handleModify(slug) {
     setDeleteSlug(slug)
     console.log(slug);
@@ -36,10 +40,13 @@ function App() {
     setDisplay(true)
   }
 
+  /**
+   * Updates the state object for the post being updated based on user input.
+   * @param {Event} e - The event object from the input field.
+   */
   function handleUpdate(e) {
     const key = e.target.name;
     const value = key == 'tags' ? e.target.value.split(',') : e.target.value;
-
 
     setUpdateObj((udpateObj) => ({
       ...udpateObj,
@@ -47,6 +54,10 @@ function App() {
     }))
   }
 
+  /**
+   * Submits the updated post data to the server and refreshes the posts list.
+   * @param {Event} e - The event object from the form submission.
+   */
   function handleSubmit(e) {
     e.preventDefault()
     console.log(udpateObj);
@@ -60,8 +71,6 @@ function App() {
       })
       .catch(err => console.error(err))
   }
-
-
 
   /**
    * Sends a DELETE request to the specified URL with the given slug and updates the posts data.
