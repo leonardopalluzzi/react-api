@@ -23,6 +23,8 @@ header {
   }
 }
 
+
+
 .titles {
   font-size: 1.4rem;
   font-weight: 700;
@@ -41,4 +43,18 @@ header {
 
 .post_img {
   max-width: 100%;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  color: lightgrey;
+}
+
+.btn-overlay {
+  position: absolute;
+  top: 50px;
+  right: 50px;
 }

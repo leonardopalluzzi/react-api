@@ -1,20 +1,10 @@
-export default function Update({ handleUpdate, udpateObj, handleSubmit }) {
+export default function Update({ handleUpdate, udpateObj, handleSubmit, postTitle, setDisplay }) {
     return (
-        <div className="container position-absolute">
+        <div className="container data-bs-theme={'dark'} mt-5">
+            <h2>Modifica il post: {postTitle}</h2>
+
             <form onSubmit={handleSubmit} method="PUT">
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">IMG</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="image"
-                        id="image"
-                        placeholder="img src"
-                        onChange={handleUpdate}
-                        value={udpateObj.image}
-                    />
-                    <small id="helpId" className="form-text text-muted">Inserisci IMG src</small>
-                </div>
+
 
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Title</label>
@@ -31,8 +21,22 @@ export default function Update({ handleUpdate, udpateObj, handleSubmit }) {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="" className="form-label">Content</label>
+                    <label htmlFor="" className="form-label">IMG</label>
                     <input
+                        type="text"
+                        className="form-control"
+                        name="image"
+                        id="image"
+                        placeholder="img src"
+                        onChange={handleUpdate}
+                        value={udpateObj.image}
+                    />
+                    <small id="helpId" className="form-text text-muted">Inserisci IMG src</small>
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="" className="form-label">Content</label>
+                    <textarea
                         type="text"
                         className="form-control"
                         name="content"
@@ -51,7 +55,7 @@ export default function Update({ handleUpdate, udpateObj, handleSubmit }) {
                         className="form-control"
                         name="tags"
                         id="tags"
-                        placeholder="tags"
+                        placeholder="tag, tag, tag, ..."
                         onChange={handleUpdate}
                         value={udpateObj.tags}
                     />
@@ -60,7 +64,9 @@ export default function Update({ handleUpdate, udpateObj, handleSubmit }) {
 
                 <button type="submit" className="btn btn-primary">Submit</button>
 
+
             </form>
+            <button onClick={() => setDisplay(false)} className="btn btn-danger btn-overlay">Close</button>
         </div>
 
     )

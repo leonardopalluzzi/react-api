@@ -47,7 +47,7 @@ export default function Main({ handleModify, postsData, handleDelete, endpoint, 
                                         <div className="container">
                                             <div className="row">
                                                 <button onClick={() => handleDelete(endpoint, post.slug)} className='col-6 btn btn-danger'>Delete</button>
-                                                <button onClick={() => handleModify(post.slug)} className='col-6 btn btn-primary'>Modify</button>
+                                                <button onClick={() => handleModify(post.slug, post.title)} className='col-6 btn btn-primary'>Modify</button>
                                             </div>
 
                                         </div>

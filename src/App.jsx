@@ -10,6 +10,7 @@ function App() {
   const [postsData, setPosts] = useState([])
   const [deleteSlug, setDeleteSlug] = useState('')
   const [display, setDisplay] = useState(false)
+  const [postTitle, setTitle] = useState('')
   const [udpateObj, setUpdateObj] = useState({
     title: '',
     content: '',
@@ -33,11 +34,13 @@ function App() {
    * Handles the modification of a post by setting the slug and toggling the display state.
    * @param {string} slug - The unique identifier of the post to be modified.
    */
-  function handleModify(slug) {
+  function handleModify(slug, title) {
     setDeleteSlug(slug)
     console.log(slug);
-
+    setTitle(title)
     setDisplay(true)
+    console.log(postTitle);
+
   }
 
   /**
@@ -115,12 +118,15 @@ function App() {
           <h1>Posts</h1>
         </div>
       </header>
-      <div className={`container ${display === false ? 'd-none' : 'd-block'}`}>
-        <Update handleSubmit={handleSubmit} udpateObj={udpateObj} handleUpdate={handleUpdate} />
+      <div className={`overlay ${display === false ? 'd-none' : 'd-block'}`}>
+        <Update postTitle={postTitle} setDisplay={setDisplay} handleSubmit={handleSubmit} udpateObj={udpateObj} handleUpdate={handleUpdate} />
       </div>
 
 
-      <Main handleModify={handleModify} imgPath={imgPath} endpoint={endpoint} postsData={postsData} handleDelete={handleDelete} />
+      <div className={`container ${display === false ? 'd-block' : 'd-none'}`}>
+        <Main handleModify={handleModify} imgPath={imgPath} endpoint={endpoint} postsData={postsData} handleDelete={handleDelete} />
+      </div>
+
 
     </>
   )
