@@ -55,7 +55,7 @@ export default function Update({ handleUpdate, udpateObj, handleSubmit }) {
                         onChange={handleUpdate}
                         value={udpateObj.tags}
                     />
-                    <small id="helpId" className="form-text text-muted">Inserisci TAGS</small>
+                    <small id="helpId" className="form-text text-muted">Inserisci i TAGS separati da una virgola</small>
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>

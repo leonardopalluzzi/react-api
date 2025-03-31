@@ -37,8 +37,9 @@ function App() {
   }
 
   function handleUpdate(e) {
-    const value = e.target.value;
     const key = e.target.name;
+    const value = key == 'tags' ? e.target.value.split(',') : e.target.value;
+
 
     setUpdateObj((udpateObj) => ({
       ...udpateObj,
