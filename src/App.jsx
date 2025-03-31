@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-const endpoint = 'http://localhost:3000/api/v1/posts';
-const imgPath = 'http://localhost:3000/imgs/posts/'
+const endpoint = 'http://192.168.1.70:3000/api/v1/posts';
+const imgPath = 'http://192.168.1.70:3000/imgs/posts/'
 
 import Main from './components/Main'
 
