@@ -49,7 +49,11 @@ function App() {
    */
   function handleUpdate(e) {
     const key = e.target.name;
-    const value = key == 'tags' ? e.target.value.split(',') : e.target.value;
+    let value = key == 'tags' ? e.target.value.split(',') : e.target.value;
+
+    if (value == '') {
+      value = 'ciao'
+    }
 
     setUpdateObj((udpateObj) => ({
       ...udpateObj,
@@ -63,6 +67,7 @@ function App() {
    */
   function handleSubmit(e) {
     e.preventDefault()
+
     console.log(udpateObj);
     fetch(endpoint + '/' + deleteSlug, update)
       .then(res => res.json())
