@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-const endpoint = 'http://192.168.1.70:3000/api/v1/posts';
-const imgPath = 'http://192.168.1.70:3000/imgs/posts/'
+const endpoint = 'http://localhost:3000/api/v1/posts';
+const imgPath = 'http://localhost:3000/imgs/posts/'
 
 import Main from './components/Main'
 import Update from './components/Update'
@@ -15,7 +15,6 @@ function App() {
     title: '',
     content: '',
     image: '',
-    tags: []
   })
 
   let destroy = {
@@ -35,7 +34,7 @@ function App() {
    * @param {string} slug - The unique identifier of the post to be modified.
    */
   function handleModify(slug, title) {
-    setDeleteSlug(slug)
+    setDeleteSlug(title.toLocaleLowerCase().replaceAll(' ', '-'))
     console.log(slug);
     setTitle(title)
     setDisplay(true)
@@ -59,6 +58,8 @@ function App() {
       ...udpateObj,
       [key]: value
     }))
+    console.log(udpateObj);
+
   }
 
   /**

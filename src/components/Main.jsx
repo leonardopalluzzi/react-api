@@ -36,9 +36,9 @@ export default function Main({ handleModify, postsData, handleDelete, endpoint, 
                                     <td>{truncateText(post.content, 50)}</td>
                                     <td>
                                         <ul className="tag_list">
-                                            {post.tags.map((tag, i) => (
+                                            {/* {post.tags.map((tag, i) => (
                                                 <li key={`tag-${i}`}>{tag}, </li>
-                                            ))}
+                                            ))} */}
                                         </ul>
                                     </td>
 
@@ -46,8 +46,8 @@ export default function Main({ handleModify, postsData, handleDelete, endpoint, 
                                     <td>
                                         <div className="container">
                                             <div className="row">
-                                                <button onClick={() => handleDelete(endpoint, post.slug)} className='col-6 btn btn-danger'>Delete</button>
-                                                <button onClick={() => handleModify(post.slug, post.title)} className='col-6 btn btn-primary'>Modify</button>
+                                                <button onClick={() => handleDelete(endpoint, post.title)} className='col-6 btn btn-danger'>Delete</button>
+                                                <button onClick={() => handleModify(slug, post.title)} className='col-6 btn btn-primary'>Modify</button>
                                             </div>
 
                                         </div>
